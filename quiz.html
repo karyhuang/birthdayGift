@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Babe Birthday Gift</title>
+
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+
+    <div id="main" class="quiz">
+      <div id="test">
+
+        <!--  Q1 -->
+        <form class="form">
+          <label>
+            What's the middle letter in your initial?<br>
+            (please answer in upper case)
+      			<input id="ans1" type="text" name="ans1" placeholder="" required>
+            <!-- 'L' -->
+      		</label>
+        </form>
+        <div id="next" class="next">NEXT</div>
+
+        <!-- Q2 -->
+        <form class="form hide" id="form2">
+          <label>
+            That was easy right?<br>
+            Now, how does Kary usually customize her caramel macchiato? Two words.<br>
+            (please answer in lower case)
+      			<input id="ans2" type="text" name="ans2" placeholder="" required>
+            <!-- 'light caramel' -->
+      		</label>
+        </form>
+        <div id="next2" class="next hide">NEXT</div>
+
+        <!-- Q3 -->
+        <form class="form hide" id="form3">
+          <label>
+      			Almost there!<br>
+            Get a piece of paper ready, then <a id="clickHere" href="table.html" target="_blank">CLICK HERE</a> to see instructions<br>
+            (please answer in upper case)
+      			<input id="ans3" type="text" name="ans3" placeholder="" required>
+            <!-- 'Zara' -->
+      		</label>
+        </form>
+        <div id="next3" class="next hide">NEXT</div>
+
+        <div class="hide" id="gift"><a href="gift.html">REVEAL MY GIFT</a></div>
+      </div>
+    </div>
+
+    <script>
+
+      document.getElementById('next').addEventListener('click', goNext);
+      document.getElementById('next2').addEventListener('click', goNext2);
+      document.getElementById('next3').addEventListener('click', goNext3);
+
+      var count = 0;
+      var hint1 = 'HINT: XXXXX XXXXXXX';
+      var hint2 = 'LAST HINT: l _ g _ _ t c _ _ _ m _l';
+
+      function goNext() {
+        var ans1 = document.getElementById('ans1');
+        if (ans1.value == "L") {
+          document.getElementById('form2').classList.remove('hide');
+          document.getElementById('next2').classList.remove('hide');
+        }
+        else {
+          alert("Really lol? C'mon you can't get this wrong.");
+          ans1.value = "";
+        }
+      }
+
+      function goNext2() {
+        var ans2 = document.getElementById('ans2');
+        if (ans2.value == "light caramel") {
+          document.getElementById('form3').classList.remove('hide');
+          document.getElementById('next3').classList.remove('hide');
+        }
+        else {
+          alert('Nope! Try again :)');
+          ans2.value = "";
+          counter();
+        }
+      }
+
+      function goNext3() {
+        var ans3 = document.getElementById('ans3');
+        if (ans3.value == "ZARA") {
+          document.getElementById('gift').classList.remove('hide');
+        }
+        else {
+          alert('Look carefully and try again!');
+          ans3.value = "";
+        }
+      }
+
+      function counter() {
+        count+=1;
+        console.log(count);
+        if (count == 3) {
+          alert(hint1);
+        }
+        if (count == 6) {
+          alert(hint2);
+        }
+      }
+
+    </script>
+  </body>
+</html>
